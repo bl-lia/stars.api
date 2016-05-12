@@ -1,0 +1,86 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Aikatsu Stars API
+  description: Move on now
+  version: "0.0.1"
+# the domain of the service
+host: example.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /dresses:
+    get:
+      summary: List of dresses
+      description: Dresses
+      responses:
+        200:
+          description: An array of products
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dress'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /dresses/{id}:
+    get:
+      summary: dress
+      description: Dress
+      responses:
+        200:
+          description: An array of products
+          schema:
+            $ref: '#/definitions/Dress'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Dress:
+    type: object
+    properties:
+      dress_id:
+        type: string
+        description: カードに記載されているドレスID
+      title:
+        type: string
+        description: ドレス名
+      image:
+        type: string
+        description: ドレスイメージのURL
+      brand:
+        type: string
+        description: ブランド名
+      dress_type:
+        type: string
+        description: ドレスのタイプ
+      category:
+        type: string
+        description: ドレスのカテゴリー
+      rarity:
+        type: string
+        description: レア度
+      appeal:
+        type: string
+        description: ドレスアピール
+      points:
+        type: number
+        description: アピールポイント
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
