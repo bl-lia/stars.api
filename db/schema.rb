@@ -27,4 +27,6 @@ ActiveRecord::Schema.define(version: 20160512011659) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "dresses", ["dress_id"], name: "index_dresses_on_dress_id", unique: true, using: :btree
+
 end

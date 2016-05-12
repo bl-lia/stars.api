@@ -12,5 +12,6 @@ class CreateDresses < ActiveRecord::Migration
       t.integer :points
       t.timestamps null: false
     end
+    add_index :dresses, :dress_id, :unique => true
   end
 end
